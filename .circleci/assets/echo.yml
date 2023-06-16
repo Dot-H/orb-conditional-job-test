@@ -1,13 +1,11 @@
 version: 2.1
 
-# This file contains a job always failing
-
 jobs:
-  failing-job:
+  echo:
     docker:
-      - image: cimg/base
+      - image: cimg/base:2023.06
     parameters:
       message:
-          type: string
+        type: string
     steps:
       - run: echo << parameters.message >>

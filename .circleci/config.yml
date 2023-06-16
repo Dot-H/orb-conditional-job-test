@@ -1,16 +1,30 @@
 version: 2.1
 setup: true
 orbs:
-  conditional-jobs: doth/conditional-jobs@dev:alpha
+  continuation: circleci/continuation@0.1.2
+  conditional-jobs: doth/conditional-jobs@dev:d843f832e663c2275f37d86cae6fc1d1e7daf6ba
   config-splitting: circle-makotom-orbs/config-splitting@0.0.3
+
+jobs:
+  combine-and-optional:
+    docker:
+        - image: cimg/python:3.8
+    resource_class: small
+    steps:
+        - checkout
+        - config-splitting/prepare
+        - config-splitting/combine-configs:
+            config-list-file: .circleci/.circleci-config-dependencies
+            output: /tmp/continuation-config.yml
+            shared-config-file: .circleci/continue-shared.yml
+        - conditional-jobs/workflow-job-patching:
+            circleci-config-path: /tmp/continuation-config.yml
+            output-config-path: /tmp/continuation-config.yml
+            jobs-to-transform: "failing-job"
+        - continuation/continue:
+            configuration_path: /tmp/continuation-config.yml
 
 workflows:
   setup:
     jobs:
-      - config-splitting/run-all-modular-configs:
-          config-list-file: .circleci/.circleci-config-dependencies
-          filters:
-            tags:
-              only: /^(rc|hotfix)-.*/
-      - trigger-production-release
-      - trigger-hotfix-release
+      - combine-and-optional

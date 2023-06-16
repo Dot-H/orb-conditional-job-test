@@ -5,6 +5,6 @@ version: 2.1
 jobs:
   succeeding-job:
     docker:
-        - image: cimg/base
+        - image: cimg/base:2023.06
     steps:
       - run: exit 0
