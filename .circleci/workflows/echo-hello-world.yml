@@ -3,8 +3,7 @@ version: 2.1
 # Echoes "Hello World!"
 
 workflows:
-  version: 2
   echo-hello-world:
     jobs:
       - echo:
-        message: "Hello World!"
+          message: Hello!

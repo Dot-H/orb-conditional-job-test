@@ -1,2 +1,5 @@
-workflows/echo-hello-world.yml
-workflows/run-succeed-and-fail.yml
+.circleci/assets/echo.yml
+.circleci/assets/failing-job.yml
+.circleci/assets/succeeding-job.yml
+.circleci/workflows/echo-hello-world.yml
+.circleci/workflows/run-succeed-and-fail.yml
