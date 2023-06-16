@@ -9,8 +9,3 @@ workflows:
     jobs:
       - config-splitting/run-all-modular-configs:
           config-list-file: .circleci/.circleci-config-dependencies
-          filters:
-            tags:
-              only: /^(rc|hotfix)-.*/
-      - trigger-production-release
-      - trigger-hotfix-release
