@@ -1,0 +1,16 @@
+version: 2.1
+setup: true
+orbs:
+  conditional-jobs: doth/conditional-jobs@dev:alpha
+  config-splitting: circle-makotom-orbs/config-splitting@0.0.3
+
+workflows:
+  setup:
+    jobs:
+      - config-splitting/run-all-modular-configs:
+          config-list-file: .circleci/.circleci-config-dependencies
+          filters:
+            tags:
+              only: /^(rc|hotfix)-.*/
+      - trigger-production-release
+      - trigger-hotfix-release
