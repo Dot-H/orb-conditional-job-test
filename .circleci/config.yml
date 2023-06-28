@@ -2,7 +2,7 @@ version: 2.1
 setup: true
 orbs:
   continuation: circleci/continuation@0.1.2
-  conditional-jobs: doth/conditional-jobs@dev:d843f832e663c2275f37d86cae6fc1d1e7daf6ba
+  conditional-jobs: doth/conditional-jobs@dev:ed175a4ad5b029c9d85aa461b4ce30d52ed4df48
   config-splitting: circle-makotom-orbs/config-splitting@0.0.3
 
 jobs:
@@ -20,7 +20,7 @@ jobs:
         - conditional-jobs/workflow-job-patching:
             circleci-config-path: /tmp/continuation-config.yml
             output-config-path: /tmp/continuation-config.yml
-            jobs-to-transform: "failing-job"
+            jobs-to-transform-config-path: .circleci/jobs-to-transform.yml
         - continuation/continue:
             configuration_path: /tmp/continuation-config.yml
 
