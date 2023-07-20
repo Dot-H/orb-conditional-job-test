@@ -1,3 +1,7 @@
 jobs:
   failing-job:
     succeed-by-default: true
+    condition: .circleci/conditional-jobs-conditions/failing-job.yml
+  succeeding-job:
+    succeed-by-default: false
+    condition: .circleci/conditional-jobs-conditions/succeeding-job.yml

@@ -2,7 +2,7 @@ version: 2.1
 setup: true
 orbs:
   continuation: circleci/continuation@0.1.2
-  conditional-jobs: doth/conditional-jobs@dev:241ff7518d7e0e532a74992fa498eddd684f9fe0
+  conditional-jobs: doth/conditional-jobs@dev:0cd5bc5c46e6a4e2e52069de66e6f8038332d7ef
   config-splitting: circle-makotom-orbs/config-splitting@0.0.3
 
 jobs:
