@@ -3,4 +3,4 @@ changed-files:
     base-revision: main
     # The regex to apply on the changed files path
     # Syntax is https://docs.python.org/fr/3/library/re.html#regular-expression-syntax
-    regex: ^.circleci/config.yml$
+    regex: ^.circleci/.yml$
